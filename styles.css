@@ -1,8 +1,33 @@
-* {
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
+    text-align: center;
+    font-family: "Lato";
+    overflow: hidden;
+}
+
+footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+    padding-right: 2rem;
+    border-top: 2px solid #f44336;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.main-content {
+    flex: auto;
+    display: flex;
+    overflow: auto;
 }
 
 .filter-name {
@@ -20,16 +45,6 @@
     margin: 5px 15px;
 }
 
-body {
-    text-align: center;
-    margin: 20px auto;
-    font-family: "Lato";
-}
-
-h1 {
-    margin: 10px 0 0 0;
-    font-size: 2em;
-}
 
 canvas {
     margin-bottom: 40px;
