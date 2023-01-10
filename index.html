@@ -8,17 +8,21 @@
 				crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
 		<script src="scripts.js"></script>
+
+		<link rel="icon" href="logo.jpg">
+
+		<title>Editor</title>
 	</head>
 
 	<body>
 		<div class="content">
 			<header>
-				<h1>Pictures editor</h1>
+				<h1>Photos editor</h1>
 			</header>
 
 			<div class="main-content">
 
-				<div class="edit-area hidden-element">
+				<div class="edit-area">
 					<div class="filters-panel">
 						<div class="filter-group">
 							<button id="sharpen-dec">-</button>
@@ -109,6 +113,7 @@
 					<input type="file" id="upload-file" placeholder="Upload a Picture" />
 					<label for="upload-file">Upload a Picture</label>
 					<button id="download-btn">Download Image</button>
+					<button id="reset-btn">Reset Image</button>
 				</div>
 				<!--
 				<div class="preview-wrapper">

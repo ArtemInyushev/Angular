@@ -1,3 +1,7 @@
+:root {
+    --dark-color: #23262a;
+}
+
 html {
     height: 100%;
 }
@@ -7,7 +11,7 @@ body {
     margin: 0;
     color: white;
     font-family: "Lato";
-    background: linear-gradient(to right, #000000, #2C3E50);;
+    background: #171719;
     overflow: hidden;
 }
 
@@ -43,7 +47,7 @@ footer {
 .edit-area {
     display: flex;
     flex-flow: column;
-    row-gap: 5rem;
+    row-gap: 3rem;
 }
 
 .filters-panel {
@@ -54,6 +58,9 @@ footer {
     flex-flow: row wrap;
     row-gap: 1rem;
     column-gap: 1rem;
+    padding: 1rem;
+    background-color: var(--dark-color);
+    border-radius: 8px;
 }
 
 .main-panel {
@@ -68,6 +75,9 @@ footer {
     flex-flow: row wrap;
     row-gap: 1rem;
     column-gap: 1rem;
+    padding: 1rem;
+    background-color: var(--dark-color);
+    border-radius: 8px;
 }
 
 .load-buttons-area {
@@ -77,7 +87,7 @@ footer {
 }
 
 .filter-name {
-    background: #2c7dfa;
+    background: hsla(0,0%,100%,.08);
     padding: 2px;
     display: inline-block;
     color: white;
@@ -92,10 +102,11 @@ footer {
     column-gap: 0.25rem;
 }
 
-
 canvas {
     background: #2C3E50;
     width: 100%;
+    background-color: var(--dark-color);
+    border-radius: 8px;
 }
 
 .filters-panel button,
@@ -112,13 +123,15 @@ canvas {
 
 .filters-panel button.disabled {
     background: #aaa;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .filters-panel button {
     padding: 2px 10px;
     margin: 0;
     cursor: pointer;
-    background: #8458B3;
+    background: #00a3da;
 }
 
 #reset-btn {
@@ -149,8 +162,8 @@ canvas {
     display: inline-block;
 }
 
-[type="file"] + label:hover {
-    background: #3399ff;
+[type="file"] + label:hover, #download-btn:hover, #reset-btn:hover {
+    opacity: 0.9;
 }
 
 .hidden-element {

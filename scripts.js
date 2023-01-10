@@ -208,6 +208,14 @@ $(document).ready(function() {
 		download(canvas, actualName + "-edited.jpg");
 	});
 
+	$("#reset-btn").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.reloadCanvasData();
+			this.revert(false);
+			this.render();
+		});
+	});
+
 	$("#upload-file").on("change", function() {
 		var file = document.querySelector("#upload-file").files[0];
 		var reader = new FileReader();
