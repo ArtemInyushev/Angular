@@ -4,6 +4,10 @@ $(document).ready(function() {
 	var ctx = canvas.getContext("2d");
 	var fileName = "";
 
+	var editArea = $(".edit-area");
+
+	var mainPanel = $(".main-panel")
+
 	$("#brightness-inc").on("click", function(e) {
 		Caman("#canvas", img, function() {
 			this.brightness(10).render();
@@ -64,9 +68,21 @@ $(document).ready(function() {
 		});
 	});
 
+	$("#noise-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.noise(-10).render();
+		});
+	});
+
 	$("#noise-inc").on("click", function(e) {
 		Caman("#canvas", img, function() {
 			this.noise(10).render();
+		});
+	});
+
+	$("#sharpen-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.sharpen(-10).render();
 		});
 	});
 
@@ -76,9 +92,21 @@ $(document).ready(function() {
 		});
 	});
 
+	$("#sepia-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.sepia(-20).render();
+		});
+	});
+
 	$("#sepia-inc").on("click", function(e) {
 		Caman("#canvas", img, function() {
 			this.sepia(20).render();
+		});
+	});
+
+	$("#hue-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.hue(-10).render();
 		});
 	});
 
@@ -88,15 +116,33 @@ $(document).ready(function() {
 		});
 	});
 
+	$("#blur-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.stackBlur(-5).render();
+		});
+	});
+
 	$("#blur-inc").on("click", function(e) {
 		Caman("#canvas", img, function() {
 			this.stackBlur(5).render();
 		});
 	});
 
+	$("#gamma-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.gamma(-0.1).render();
+		});
+	});
+
 	$("#gamma-inc").on("click", function(e) {
 		Caman("#canvas", img, function() {
-			this.gamma(0.1).render();
+			this.gamma(10).render();
+		});
+	});
+
+	$("#clip-dec").on("click", function(e) {
+		Caman("#canvas", img, function() {
+			this.clip(-10).render();
 		});
 	});
 
@@ -165,7 +211,6 @@ $(document).ready(function() {
 	$("#upload-file").on("change", function() {
 		var file = document.querySelector("#upload-file").files[0];
 		var reader = new FileReader();
-
 		if (file) {
 			fileName = file.name;
 			reader.readAsDataURL(file);
@@ -177,10 +222,30 @@ $(document).ready(function() {
 				img = new Image();
 				img.src = reader.result;
 				img.onload = function() {
-				canvas.width = img.width;
-				canvas.height = img.height;
-				ctx.drawImage(img, 0, 0, img.width, img.height);
-				$("#canvas").removeAttr("data-caman-id");
+					if (editArea.hasClass("hidden-element")) {
+						editArea.removeClass("hidden-element")
+					}
+
+					let coeffW = 1;
+					let coeffH = 1;
+					if (img.width > mainPanel.width()) {
+						coeffW = img.width / mainPanel.width();
+					}
+					if (img.height > mainPanel.height()) {
+						coeffH = img.height / mainPanel.height();
+					}
+					const coeff = coeffW * coeffH;
+					console.log(img.width / coeff, img.height / coeff)
+					$("#canvas").width(img.width / coeff);
+					$("#canvas").height(img.height / coeff);
+
+					console.log(img.width, mainPanel.width())
+					console.log(img.height, mainPanel.height())
+					
+					canvas.width = img.width / coeff;
+					canvas.height = img.height / coeff;
+					ctx.drawImage(img, 0, 0, img.width / coeff, img.height / coeff);
+					$("#canvas").removeAttr("data-caman-id");
 				};
 			},
 			false
@@ -199,21 +264,21 @@ function download(canvas, filename) {
 	if (document.createEvent) {
 		e = document.createEvent("MouseEvents");
 		e.initMouseEvent(
-		"click",
-		true,
-		true,
-		window,
-		0,
-		0,
-		0,
-		0,
-		0,
-		false,
-		false,
-		false,
-		false,
-		0,
-		null
+			"click",
+			true,
+			true,
+			window,
+			0,
+			0,
+			0,
+			0,
+			0,
+			false,
+			false,
+			false,
+			false,
+			0,
+			null
 		);
 		lnk.dispatchEvent(e);
 	} else if (lnk.fireEvent) {
