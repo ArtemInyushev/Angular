@@ -234,6 +234,15 @@ $(document).ready(function() {
 						editArea.removeClass("hidden-element")
 					}
 
+					const downloadButton = $("#download-btn");
+					if (downloadButton.hasClass("hidden-element")) {
+						downloadButton.removeClass("hidden-element")
+					}
+					const resetButton = $("#reset-btn");
+					if (resetButton.hasClass("hidden-element")) {
+						resetButton.removeClass("hidden-element")
+					}
+
 					let coeffW = 1;
 					let coeffH = 1;
 					if (img.width > mainPanel.width()) {
