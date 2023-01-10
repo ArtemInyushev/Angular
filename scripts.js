@@ -234,7 +234,7 @@ $(document).ready(function() {
 					if (img.height > mainPanel.height()) {
 						coeffH = img.height / mainPanel.height();
 					}
-					const coeff = coeffW * coeffH;
+					const coeff = coeffW > coeffH ? coeffW : coeffH;
 					console.log(img.width / coeff, img.height / coeff)
 					$("#canvas").width(img.width / coeff);
 					$("#canvas").height(img.height / coeff);
