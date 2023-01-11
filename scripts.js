@@ -164,7 +164,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$("#calrity-btn").on("click", function(e) {
+	$("#clarity-btn").on("click", function(e) {
 		Caman("#canvas", img, function() {
 			this.clarity().render();
 		});
